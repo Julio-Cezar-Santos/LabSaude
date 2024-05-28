@@ -1,18 +1,21 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import connectDatabase from './database/db.js';
+
+
+import userRoute from './routes/user.route.js';
+import authRoute from './routes/auth.route.js';
+
+dotenv.config();
+connectDatabase();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb+srv://jcezar0123:AVv1VhiSaIWhXp7A@labsaude.sjadzx1.mongodb.net/?retryWrites=true&w=majority&appName=LabSaude', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
-
-const userRoutes = require('./routes/userRoutes');
-app.use('/api/users', userRoutes);
+app.use('/users', userRoute);
+app.use('/login', authRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
