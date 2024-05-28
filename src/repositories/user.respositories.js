@@ -1,4 +1,4 @@
-import User from '../models/user.model.js';
+import User from '../models/user.js';
 
 const findByEmailUserRepository = (email) => User.findOne({ email: email });
 

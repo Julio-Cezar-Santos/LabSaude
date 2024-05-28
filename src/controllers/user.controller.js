@@ -59,11 +59,15 @@ const updateUser = async (req, res) => {
     if (!nome && !email && !senha && !dataNascimento && !cpf && admin === undefined) {
         return res.status(400).json({ message: 'Submit at least one field for update' });
     }
-
-    const { id, user} = req;
-
-
+    const { id} = req;
     try {
+
+        const foundUser = await userRepositories.findByEmailUserRepository(email);
+        
+        if (foundUser) {
+            return res.status(409).json({ message: 'User already exists' });
+        }
+        
         const updatedUser = await userService.updateUserService(id, nome, email, senha, dataNascimento, cpf, admin);
         res.status(200).json({ message: 'User updated successfully', user: updatedUser});
     } catch (error) {
