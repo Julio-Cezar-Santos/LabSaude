@@ -30,15 +30,32 @@ const createUser = async (req, res) => {
     }
 };
 
-const getAllUsers = async (_req, res) => {
+const getAllUsers = async (req, res) => {
     try {
-        const users = await userService.getAllUsersService();
+        let {limit, offset} = req.query;
+
+        if (!limit) limit = 10;
+
+        if (!offset) offset = 0;
+
+        limit = parseInt(limit);
+        offset = parseInt(offset);
+
+        const users = await userService.getAllUsersService(offset, limit);
+        const totalUsers = await userService.countUsersService();
+        const currentUrl = req.baseUrl;
+
+        const next = offset + limit;
+        const nextUrl = next >= totalUsers ? null : `${currentUrl}?offset=${next}&limit=${limit}`
+
+        const previous = offset - limit;
+        const previousUrl = previous < 0 ? null : `${currentUrl}?offset=${previous}&limit=${limit}`
 
         if (users.length === 0 || !users){
             return res.status(404).json({ message: 'No users found' });
         }
 
-        res.status(200).json(users);
+        res.status(200).json({ users, totalUsers, limit, offset, nextUrl, previousUrl });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
