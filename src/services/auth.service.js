@@ -1,7 +1,7 @@
 // import User from '../models/user.js';
 // import jwt from 'jsonwebtoken';
 
-const User = require('../models/user');
+const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
 const loginService = async (email) => User.findOne({email: email}).select('+senha');
