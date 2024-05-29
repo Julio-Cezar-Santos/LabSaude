@@ -28,4 +28,13 @@ const deleteUserService = async (id) => {
 }
 
 
-export default  {createUserService, getAllUsersService, getUserByIdService, updateUserService, deleteUserService}
+const countUsersService = async () => {
+    try {
+        const totalUsers = await User.countDocuments();
+        return totalUsers;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default  {createUserService, getAllUsersService, getUserByIdService, updateUserService, deleteUserService , countUsersService}
