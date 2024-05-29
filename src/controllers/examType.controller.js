@@ -1,4 +1,4 @@
-import { createExamTypeService, getExamTypeService, updateExamTypeService, deleteExamTypeService } from '../services/examType.service.js';
+const  { createExamTypeService, getExamTypeService, updateExamTypeService, deleteExamTypeService } = require('../services/examType.service.js');
 
 const createExamType = async (req, res) => {
     try {
@@ -45,5 +45,4 @@ const deleteExamType = async (req, res) => {
     }
 }
 
-
-export default { createExamType, getExamType, updateExamType, deleteExamType };
+module.exports = { createExamType, getExamType, updateExamType, deleteExamType };

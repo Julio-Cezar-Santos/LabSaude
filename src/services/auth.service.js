@@ -1,6 +1,11 @@
-import User from '../models/user.js';
-import jwt from 'jsonwebtoken';
+// import User from '../models/user.js';
+// import jwt from 'jsonwebtoken';
 
-export const loginService = async (email) => User.findOne({email: email}).select('+senha');
+const User = require('../models/user.model');
+const jwt = require('jsonwebtoken');
 
-export const generateToken = (id) => jwt.sign({id: id}, process.env.SECRET_JWT, {expiresIn: 86400});
+const loginService = async (email) => User.findOne({email: email}).select('+senha');
+
+const generateToken = (id) => jwt.sign({id: id}, process.env.SECRET_JWT, {expiresIn: 86400});
+
+module.exports = { loginService, generateToken };

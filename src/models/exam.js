@@ -1,5 +1,4 @@
-import { Schema, model } from 'mongoose';
-
+const { Schema, model } = require('mongoose');
 const ExamSchema = new Schema({
     usuarioId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     tipoExameId: { type: Schema.Types.ObjectId, ref: 'ExamType', required: true },
@@ -9,4 +8,4 @@ const ExamSchema = new Schema({
 
 const Exam = model('Exam', ExamSchema);
 
-export default Exam;
+model.exports = Exam;

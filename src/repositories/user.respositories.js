@@ -1,5 +1,5 @@
-import User from '../models/user.js';
+const User = require('../models/user.model');
 
 const findByEmailUserRepository = (email) => User.findOne({ email: email });
 
-export default { findByEmailUserRepository };
+module.exports = { findByEmailUserRepository };

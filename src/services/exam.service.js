@@ -1,4 +1,4 @@
-import Exam from "../models/Exam.js";
+const Exam = require('../models/exam.model');
 
 const createExamService = ( usuarioId, tipoExameId, dataColeta, resultado ) => 
     Exam.create({ usuarioId, tipoExameId, dataColeta, resultado });
@@ -13,4 +13,4 @@ const updateExamService = (id, updateData) => Exam.findByIdAndUpdate(id, updateD
 
 const deleteExamService = (id) => Exam.findByIdAndDelete(id);
 
-export default {createExamService, getExamService, getExamByIdService, getExamsByUserIdService, updateExamService, deleteExamService};
+module.exports = {createExamService, getExamService, getExamByIdService, getExamsByUserIdService, updateExamService, deleteExamService};

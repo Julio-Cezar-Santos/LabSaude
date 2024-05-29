@@ -1,6 +1,6 @@
-import userService from '../services/user.service.js';
+const userService = require('../services/user.service');
 
-export const adminMiddleware = async (req, res, next) => {
+const adminMiddleware = async (req, res, next) => {
     try {
         const user = await userService.getUserByIdService(req.userId);
         if (user && (user.admin || user._id.toString() === req.params.id)) {
@@ -13,3 +13,5 @@ export const adminMiddleware = async (req, res, next) => {
         console.log(error);
     }
 };
+
+module.exports = adminMiddleware;

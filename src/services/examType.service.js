@@ -1,23 +1,25 @@
-import ExamType from '../models/ExamType.js';
+const ExamType = require('../models/examType.model');
 
-export const createExamTypeService = async ({ nomeExame, valorReferencia }) => {
+const createExamTypeService = async ({ nomeExame, valorReferencia }) => {
     const examType = new ExamType({ nomeExame, valorReferencia });
     await examType.save();
     return examType;
 };
 
-export const getExamTypeService = async () => {
+const getExamTypeService = async () => {
     return await ExamType.find();
 }
 
-export const getExamTypeByIdService = async (id) => {
+const getExamTypeByIdService = async (id) => {
     return await ExamType.findById(id);
 }
 
-export const updateExamTypeService = async (id, { nomeExame, valorReferencia }) => {
+const updateExamTypeService = async (id, { nomeExame, valorReferencia }) => {
     return await ExamType.findByIdAndUpdate(id, { nomeExame, valorReferencia }, { new: true });
 }
 
-export const deleteExamTypeService = async (id) => {
+const deleteExamTypeService = async (id) => {
     return await ExamType.findByIdAndDelete(id);
 }
+
+module.exports = { createExamTypeService, getExamTypeService, getExamTypeByIdService, updateExamTypeService, deleteExamTypeService };

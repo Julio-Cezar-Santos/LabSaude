@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+const { Schema, model } = require('mongoose');
 
 const ExamTypeSchema = new Schema({
     nomeExame: { type: String, required: true }, 
@@ -7,4 +7,4 @@ const ExamTypeSchema = new Schema({
 
 const ExamType = model('ExamType', ExamTypeSchema);
 
-export default ExamType;
+module.exports = ExamType;

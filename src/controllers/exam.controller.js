@@ -1,7 +1,6 @@
-import examService from "../services/exam.service.js";
-import userService from "../services/user.service.js";
-import {getExamTypeByIdService} from "../services/examType.service.js";
-
+const {getExamTypeByIdService} = require('../services/examType.service');
+const examService = require('../services/exam.service');
+const userService = require('../services/user.service');
 
 const createExamController = async (req, res) => {
     const { usuarioId, tipoExameId, dataColeta, resultado } = req.body;
@@ -96,4 +95,5 @@ const deleteExamController = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
-export default {createExamController, getExamsController , getExamByIdController , getExamsByUserController, updateExamController, deleteExamController};
+
+module.exports = {createExamController, getExamsController , getExamByIdController , getExamsByUserController, updateExamController, deleteExamController};

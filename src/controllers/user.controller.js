@@ -1,6 +1,5 @@
-import userService from '../services/user.service.js';
-import userRepositories  from '../repositories/user.respositories.js';
-
+const userService = require('../services/user.service.js');
+const userRepositories = require('../repositories/user.respositories.js');
 
 const createUser = async (req, res) => {
     const { nome, email, senha, dataNascimento, cpf, admin} = req.body;

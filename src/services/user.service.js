@@ -1,4 +1,4 @@
-import User from '../models/user.js';
+const User = require('../models/user.model');
 
 const createUserService = (body) => User.create(body);
 
@@ -37,4 +37,4 @@ const countUsersService = async () => {
     }
 };
 
-export default  {createUserService, getAllUsersService, getUserByIdService, updateUserService, deleteUserService , countUsersService}
+module.exports = { createUserService, getAllUsersService, getUserByIdService, updateUserService, deleteUserService, countUsersService };

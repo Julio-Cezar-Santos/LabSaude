@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
-import userService from '../services/user.service.js';
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+const userService = require('../services/user.service.js');
 
 dotenv.config();
 
-export const authMiddleware = async (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
     try {
         const authHeader = req.headers.authorization;
 
@@ -46,3 +46,5 @@ export const authMiddleware = async (req, res, next) => {
         return res.status(500).json({ message: 'Error processing token' });
     }
 }
+
+module.exports = authMiddleware;

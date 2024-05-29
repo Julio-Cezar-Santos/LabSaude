@@ -1,4 +1,4 @@
-import  mongoose  from "mongoose";
+const mongoose = require("mongoose");
 
 function connectDatabase() {
     mongoose.    
@@ -10,4 +10,4 @@ function connectDatabase() {
     .catch((err) => console.log(`Error connecting to MongoDB Atlas: ${err}`));
 }
 
-export default connectDatabase;
+module.exports = connectDatabase;
