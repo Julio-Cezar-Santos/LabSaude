@@ -1,11 +1,11 @@
 const { Router } = require('express');
 const userController = require('../controllers/user.controller.js');
-const { authMiddleware } = require('../middleware/auth.middleware.js');
-const { adminMiddleware } = require('../middleware/admin.middleware.js');
+const  authMiddleware  = require('../middleware/auth.middleware.js');
+const  adminMiddleware  = require('../middleware/admin.middleware.js');
 
 const router = Router();
 
-import { validID, validUser } from '../middleware/global.middleware.js';
+const { validID, validUser } = require('../middleware/global.middleware.js');
 
 router.post('/', userController.createUser);
 router.get('/', authMiddleware, adminMiddleware, userController.getAllUsers);

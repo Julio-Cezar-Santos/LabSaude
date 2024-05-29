@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 
-import {login} from "../controllers/auth.controller.js";
+const login = require("../controllers/auth.controller.js");
 
 router.post("/", login);
 

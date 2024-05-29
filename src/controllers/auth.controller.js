@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const { loginService } = require('../services/auth.service');
+const { loginService, generateToken } = require('../services/auth.service');
 
 const login = async (req, res) => {
     const { email, senha } = req.body;
@@ -25,4 +25,4 @@ const login = async (req, res) => {
     }
 }
 
-module.exports = { login }
+module.exports =  login 

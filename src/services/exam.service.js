@@ -1,9 +1,9 @@
-const Exam = require('../models/exam.model');
+const Exam = require('../models/Exam');
 
 const createExamService = ( usuarioId, tipoExameId, dataColeta, resultado ) => 
     Exam.create({ usuarioId, tipoExameId, dataColeta, resultado });
 
-const getExamService = (usuarioId, tipoExameId ) => Exam.find().populate('usuarioId').populate('tipoExameId');
+const getExamService = () => Exam.find().populate('usuarioId').populate('tipoExameId');
 
 const getExamByIdService = (id) => Exam.findById(id).populate('usuarioId').populate('tipoExameId');
 

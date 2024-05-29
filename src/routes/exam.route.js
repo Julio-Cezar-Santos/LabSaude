@@ -1,6 +1,8 @@
 const { Router } = require('express');
 const examController = require('../controllers/exam.controller');
-const { authMiddleware, adminMiddleware, validID } = require('../middleware/global.middleware');
+const authMiddleware = require('../middleware/auth.middleware');
+const adminMiddleware = require('../middleware/admin.middleware');
+const {  validID } = require('../middleware/global.middleware');
 
 const router = Router();
 
