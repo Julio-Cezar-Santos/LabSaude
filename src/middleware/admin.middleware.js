@@ -10,5 +10,6 @@ export const adminMiddleware = async (req, res, next) => {
         }
     } catch (error) {
         res.status(500).json({ message: 'Erro ao verificar privilégios de administrador.' });
+        console.log(error);
     }
 };

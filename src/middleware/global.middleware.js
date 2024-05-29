@@ -22,5 +22,4 @@ const validUser = async (req, res, next) => {
     req.user = user;
     next();
 }
-
 export { validID, validUser };

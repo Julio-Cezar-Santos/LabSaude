@@ -1,4 +1,3 @@
-import e from 'express';
 import ExamType from '../models/ExamType.js';
 
 export const createExamTypeService = async ({ nomeExame, valorReferencia }) => {
@@ -9,6 +8,10 @@ export const createExamTypeService = async ({ nomeExame, valorReferencia }) => {
 
 export const getExamTypeService = async () => {
     return await ExamType.find();
+}
+
+export const getExamTypeByIdService = async (id) => {
+    return await ExamType.findById(id);
 }
 
 export const updateExamTypeService = async (id, { nomeExame, valorReferencia }) => {
