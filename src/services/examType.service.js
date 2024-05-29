@@ -1,4 +1,4 @@
-const ExamType = require('../models/examType.model');
+const ExamType = require('../models/ExamType.js');
 
 const createExamTypeService = async ({ nomeExame, valorReferencia }) => {
     const examType = new ExamType({ nomeExame, valorReferencia });
