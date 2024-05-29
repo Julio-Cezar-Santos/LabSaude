@@ -8,4 +8,4 @@ const ExamSchema = new Schema({
 
 const Exam = model('Exam', ExamSchema);
 
-model.exports = Exam;
+modele.exports = Exam;
