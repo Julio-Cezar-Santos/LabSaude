@@ -1,4 +1,4 @@
-import { createExamTypeService, getExamTypeService, updateExamTypeService } from '../services/examType.service.js';
+import { createExamTypeService, getExamTypeService, updateExamTypeService, deleteExamTypeService } from '../services/examType.service.js';
 
 const createExamType = async (req, res) => {
     try {
@@ -35,5 +35,15 @@ const updateExamType = async (req, res) => {
     }
 }
 
+const deleteExamType = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await deleteExamTypeService(id);
+        res.status(200).json({ message: 'Tipo de exame deletado com sucesso.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Erro ao deletar tipo de exame.' });
+    }
+}
 
-export default { createExamType, getExamType, updateExamType };
+
+export default { createExamType, getExamType, updateExamType, deleteExamType };

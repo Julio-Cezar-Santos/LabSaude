@@ -10,6 +10,7 @@ import { validID, validUser } from '../middleware/global.middleware.js';
 router.post('/', userController.createUser);
 router.get('/', authMiddleware, adminMiddleware, userController.getAllUsers);
 router.get('/:id', authMiddleware, adminMiddleware, validID, validUser, userController.getUserById);
-router.put('/:id', authMiddleware, validID, validUser, userController.updateUser);
+router.put('/', authMiddleware, userController.updateUser);
+router.delete('/:id', authMiddleware, adminMiddleware, validID, validUser, userController.deleteUser);
 
 export default router;

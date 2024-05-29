@@ -1,3 +1,4 @@
+import e from 'express';
 import ExamType from '../models/ExamType.js';
 
 export const createExamTypeService = async ({ nomeExame, valorReferencia }) => {
@@ -12,4 +13,8 @@ export const getExamTypeService = async () => {
 
 export const updateExamTypeService = async (id, { nomeExame, valorReferencia }) => {
     return await ExamType.findByIdAndUpdate(id, { nomeExame, valorReferencia }, { new: true });
+}
+
+export const deleteExamTypeService = async (id) => {
+    return await ExamType.findByIdAndDelete(id);
 }

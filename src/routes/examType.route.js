@@ -10,4 +10,5 @@ const router = Router();
 router.post('/', authMiddleware, adminMiddleware, examTypeController.createExamType);
 router.get('/', authMiddleware, examTypeController.getExamType);
 router.put('/:id', authMiddleware, adminMiddleware, validID, examTypeController.updateExamType);
+router.delete('/:id', authMiddleware, adminMiddleware, validID, examTypeController.deleteExamType);
 export default router;

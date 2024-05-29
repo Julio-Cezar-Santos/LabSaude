@@ -23,5 +23,9 @@ const updateUserService = async (id, nome, email, senha, dataNascimento, cpf, ad
     );
 }
 
-const countUsersService = async () => { return await User.countDocuments(); }
-export  default  {createUserService, getAllUsersService, getUserByIdService, updateUserService, countUsersService}
+const deleteUserService = async (id) => {
+    return User.findByIdAndDelete(id);
+}
+
+
+export  default  {createUserService, getAllUsersService, getUserByIdService, updateUserService, deleteUserService}
