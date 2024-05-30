@@ -1,17 +1,17 @@
-const User = require('../models/User.js');
+const user = require('../models/user.js');
 
-const createUserService = (body) => User.create(body);
+const createUserService = (body) => user.create(body);
 
 const getAllUsersService = async (offset, limit) => {
-    return await User.find().skip(offset).limit(limit);
+    return await user.find().skip(offset).limit(limit);
 }
 
 const getUserByIdService = async (id) => {
-    return await User.findById(id);
+    return await user.findById(id);
 }
 
 const updateUserService = async (id, nome, email, senha, dataNascimento, cpf, admin) => {
-    return User.findOneAndUpdate(
+    return user.findOneAndUpdate(
         {_id: id}, {
             nome,
             email,
@@ -24,13 +24,13 @@ const updateUserService = async (id, nome, email, senha, dataNascimento, cpf, ad
 }
 
 const deleteUserService = async (id) => {
-    return User.findByIdAndDelete(id);
+    return user.findByIdAndDelete(id);
 }
 
 
 const countUsersService = async () => {
     try {
-        const totalUsers = await User.countDocuments();
+        const totalUsers = await user.countDocuments();
         return totalUsers;
     } catch (error) {
         throw error;

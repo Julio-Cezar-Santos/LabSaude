@@ -5,6 +5,6 @@ const ExamTypeSchema = new Schema({
     valorReferencia: { type: String, required: true },
 });
 
-const ExamType = model('ExamType', ExamTypeSchema);
+const examType = model('examType', ExamTypeSchema);
 
-module.exports = ExamType;
+module.exports = examType;

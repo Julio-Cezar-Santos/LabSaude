@@ -6,6 +6,6 @@ const ExamSchema = new Schema({
     resultado: { type: String, required: true },
 });
 
-const Exam = model('Exam', ExamSchema);
+const exam = model('exam', ExamSchema);
 
-module.exports = Exam;
+module.exports = exam;

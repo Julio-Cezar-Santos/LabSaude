@@ -1,16 +1,16 @@
-const Exam = require('../models/Exam');
+const exam = require('../models/exam');
 
 const createExamService = ( usuarioId, tipoExameId, dataColeta, resultado ) => 
-    Exam.create({ usuarioId, tipoExameId, dataColeta, resultado });
+    exam.create({ usuarioId, tipoExameId, dataColeta, resultado });
 
-const getExamService = () => Exam.find().populate('usuarioId').populate('tipoExameId');
+const getExamService = () => exam.find().populate('usuarioId').populate('tipoExameId');
 
-const getExamByIdService = (id) => Exam.findById(id).populate('usuarioId').populate('tipoExameId');
+const getExamByIdService = (id) => exam.findById(id).populate('usuarioId').populate('tipoExameId');
 
-const getExamsByUserIdService = (userId) => Exam.find({usuarioId: userId}).populate('tipoExameId');
+const getExamsByUserIdService = (userId) => exam.find({usuarioId: userId}).populate('tipoExameId');
 
-const updateExamService = (id, updateData) => Exam.findByIdAndUpdate(id, updateData, { new: true });
+const updateExamService = (id, updateData) => exam.findByIdAndUpdate(id, updateData, { new: true });
 
-const deleteExamService = (id) => Exam.findByIdAndDelete(id);
+const deleteExamService = (id) => exam.findByIdAndDelete(id);
 
 module.exports = {createExamService, getExamService, getExamByIdService, getExamsByUserIdService, updateExamService, deleteExamService};
