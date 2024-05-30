@@ -1,6 +1,3 @@
-// import User from '../models/user.js';
-// import jwt from 'jsonwebtoken';
-
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
