@@ -11,7 +11,7 @@ router.get('/', authMiddleware, adminMiddleware, examController.getExamsControll
 router.get('/user', authMiddleware, examController.getExamsByUserController);
 router.get('/:id', authMiddleware, adminMiddleware, validID, examController.getExamByIdController);
 router.put('/:id', authMiddleware, adminMiddleware, examController.updateExamController);
-router.delete('/:id', authMiddleware, adminMiddleware, examController.deleteExamController);
+router.delete('/:id', authMiddleware, adminMiddleware, validID, examController.deleteExamController);
 
 
 module.exports = router;

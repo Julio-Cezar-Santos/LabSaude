@@ -91,6 +91,28 @@ const updateUser = async (req, res) => {
     }
 }
 
+const updateUserById = async (req, res) => {
+    const { nome, email, senha, dataNascimento, cpf, admin } = req.body;
+
+    if (!nome && !email && !senha && !dataNascimento && !cpf && admin === undefined) {
+        return res.status(400).json({ message: 'Submit at least one field for update' });
+    }
+    
+    try {
+
+        const foundUser = await userRepositories.findByEmailUserRepository(email);
+        
+        if (foundUser) {
+            return res.status(409).json({ message: 'User already exists' });
+        }
+        
+        const updatedUser = await userService.updateUserService(req.params.id, nome, email, senha, dataNascimento, cpf, admin);
+        res.status(200).json({ message: 'User updated successfully', user: updatedUser});
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 const deleteUser = async (req, res) => {
     const id = req.params.id;
     try {
@@ -101,4 +123,4 @@ const deleteUser = async (req, res) => {
     }
 }
 
-module.exports = { createUser, getAllUsers, getUserById, updateUser, deleteUser };
+module.exports = { createUser, getAllUsers, getUserById, updateUser, updateUserById, deleteUser };

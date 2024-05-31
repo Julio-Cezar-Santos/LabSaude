@@ -85,7 +85,9 @@ const updateExamController = async (req, res) => {
 
 const deleteExamController = async (req, res) => {
     try {
-        const deletedExam = await examService.deleteExamService(req.params.id);
+        const { id } = req.params;
+
+        const deletedExam = await examService.deleteExamService(id);
         if (deletedExam) {
             res.status(200).json({ message: 'Exam deleted successfully' });
         } else {
